@@ -1,24 +1,36 @@
-import argparse
-
-def parsingArgumentsFromCommandLine():
-
-    parser = argparse.ArgumentParser(
-        prog = "Caesar_and_Affine_Cipher",
-        description = "Caesar and Affine Cipher",
-        epilog = "Please provide arguments."
-        )
-
-    parser.add_argument('-c', '--caesar', help="Run Ceaser Cipher", required=False)
-    parser.add_argument('-a', '--affine', help="Run Affine Cipher", required=False)
-    parser.add_argument('-e', help="szyfrowanie", required=False)
-    parser.add_argument('-d', help="odszyfrowanie", required=False)
-    parser.add_argument('-j', help="kryptoanaliza z tekstem jawnym", required=False)
-    parser.add_argument('-a', help="kryptoanaliza wyłącznie w oparciu o kryptogram", required=False)
+# Author: Weronika Wdowiak
+# Date: 2022-11-22
+from sys import argv
+from caesar.cipher import Caesar
+from affine.cipher import Affine
 
 
-    args = vars(parser.parse_args())
+def programCipher(args):
+
+
+    if "-c" in args:
+        encoder = Caesar
+    elif "-a" in args:
+        encoder = Affine
+    else:
+        print("ERROR: cipher not specified!")
+        exit(1)
     
-    return args
 
-if  __name__ == "__main__":
-    command = parsingArgumentsFromCommandLine()
+    if "-e" in args:
+        encoder.encode("plain.txt", "crypto.txt", "key.txt")
+    elif "-d" in args:
+        encoder.decode("crypto.txt", "decrypt.txt", "key.txt")
+    elif "-j" in args:
+        encoder.analysis_extra("crypto.txt", "extra.txt", "key-found.txt")
+    elif "-k" in args:
+        encoder.analysis("crypto.txt", "decrypt.txt")
+    else:
+        print(f"ERROR: operation not specified!")
+        exit(1)
+    
+    exit(0)
+
+
+if __name__ == '__main__':
+    programCipher(argv)
