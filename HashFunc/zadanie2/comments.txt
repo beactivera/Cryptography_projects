@@ -1,0 +1,20 @@
+   21  cat hash-.pdf personal.txt | md5sum >> hash.txt
+   22  cat hash-.pdf personal_.txt | md5sum >> hash_.txt
+   23  cat hash-.pdf personal.txt | sha1sum >> hash.txt
+   24  cat hash-.pdf personal_.txt | sha1sum >> hash_.txt
+   25  cat hash-.pdf personal.txt | sha224sum >> hash.txt
+   26  cat hash-.pdf personal_.txt | sha224sum >> hash_.txt
+   27  cat hash-.pdf personal.txt | sha256sum >> hash.txt
+   28  cat hash-.pdf personal_.txt | sha256sum >> hash_.txt
+   29  cat hash-.pdf personal.txt | sha384sum >> hash.txt
+   30  cat hash-.pdf personal_.txt | sha384sum >> hash_.txt
+   31  cat hash-.pdf personal.txt | sha512sum >> hash.txt
+   32  cat hash-.pdf personal_.txt | sha512sum >> hash_.txt
+   33  python ./diff
+   34  python3 ./diff
+   35  python3
+   36  python3 diff.py
+   37  python diff.py
+   38  python diff.py
+   39  history
+   40  history >> comments.txt
